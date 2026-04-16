@@ -1,6 +1,6 @@
 # Smart Student Appointment and Record Management System
 
-A simple Flask + SQLite web application for an IS 312 and 309 final project.
+A simple Flask + SQLite web application for an IS 312 and 313 final project.
 
 ## Features
 - User login and role-based access
