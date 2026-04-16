@@ -1,6 +1,6 @@
 # Smart Student Appointment and Record Management System
 
-A simple Flask + SQLite web application for an IS 312 final activity.
+A simple Flask + SQLite web application for an IS 312 and 309 final project.
 
 ## Features
 - User login and role-based access
@@ -25,38 +25,19 @@ A simple Flask + SQLite web application for an IS 312 final activity.
 ## How to Run
 
 ### 1. Open a terminal in the project folder
-```bash
+
 cd is312_system
-```
 
-### 2. Create a virtual environment
-**Windows**
-```bash
-python -m venv venv
-venv\Scripts\activate
-```
-
-**Mac/Linux**
-```bash
-python3 -m venv venv
-source venv/bin/activate
-```
-
-### 3. Install dependencies
-```bash
+### 2. Install dependencies
 pip install -r requirements.txt
-```
+
 
 ### 4. Start the application
-```bash
 python app.py
-```
+
 
 ### 5. Open the browser
-Go to:
-```text
 http://127.0.0.1:5000
-```
 
 ## Demo Accounts
 - Student: `student1` / `student123`
@@ -64,7 +45,6 @@ http://127.0.0.1:5000
 - Admin: `admin1` / `admin123`
 
 ## Notes
-- Change the Flask `SECRET_KEY` for production use.
 - This is a classroom prototype, not a production deployment.
 - Passwords are hashed before being stored.
 - The database is automatically seeded the first time the app runs.
