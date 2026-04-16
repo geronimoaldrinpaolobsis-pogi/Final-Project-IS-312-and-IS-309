@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="grid three">
+    <section class="card stat-card">
+        <h2>{{ user_count }}</h2>
+        <p>Total Users</p>
+    </section>
+    <section class="card stat-card">
+        <h2>{{ appt_count }}</h2>
+        <p>Total Appointments</p>
+    </section>
+    <section class="card stat-card">
+        <h2>{{ logs|length }}</h2>
+        <p>Recent Logs Shown</p>
+    </section>
+</div>
+<div class="grid two">
+    <section class="card">
+        <h2>Announcements</h2>
+        {% for item in announcements %}
+            <div class="list-item">
+                <h3>{{ item.title }}</h3>
+                <p>{{ item.content }}</p>
+            </div>
+        {% endfor %}
+    </section>
+    <section class="card">
+        <h2>Recent Activity Logs</h2>
+        {% for log in logs %}
+            <div class="list-item">
+                <p><strong>{{ log.full_name or 'System' }}</strong> — {{ log.action }}</p>
+                <small>{{ log.log_time }}</small>
+            </div>
+        {% endfor %}
+    </section>
+</div>
+{% endblock %}

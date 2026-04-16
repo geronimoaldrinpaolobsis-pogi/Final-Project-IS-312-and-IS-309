@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="grid two">
+    <section class="card">
+        <h2>Create User</h2>
+        <form method="post" class="form-grid">
+            <label>Full Name
+                <input type="text" name="full_name" required>
+            </label>
+            <label>Username
+                <input type="text" name="username" required>
+            </label>
+            <label>Password
+                <input type="password" name="password" required>
+            </label>
+            <label>Email
+                <input type="email" name="email">
+            </label>
+            <label>Role
+                <select name="role" required>
+                    <option value="student">Student</option>
+                    <option value="staff">Staff</option>
+                    <option value="admin">Admin</option>
+                </select>
+            </label>
+            <button type="submit">Create User</button>
+        </form>
+    </section>
+    <section class="card">
+        <h2>System Users</h2>
+        <table>
+            <tr><th>ID</th><th>Name</th><th>Username</th><th>Role</th><th>Email</th></tr>
+            {% for user in users %}
+            <tr>
+                <td>{{ user.id }}</td>
+                <td>{{ user.full_name }}</td>
+                <td>{{ user.username }}</td>
+                <td>{{ user.role }}</td>
+                <td>{{ user.email }}</td>
+            </tr>
+            {% endfor %}
+        </table>
+    </section>
+</div>
+{% endblock %}

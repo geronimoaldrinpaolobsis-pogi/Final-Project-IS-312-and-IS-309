@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+{% block content %}
+<section class="card">
+    <h2>Security, Privacy, and Ethics</h2>
+    <div class="grid three">
+        <div class="info-box">
+            <h3>Security</h3>
+            <ul>
+                <li>Passwords are hashed before storage.</li>
+                <li>Role-based access limits what each user can do.</li>
+                <li>Input validation reduces invalid or harmful entries.</li>
+                <li>User activity is logged for accountability.</li>
+            </ul>
+        </div>
+        <div class="info-box">
+            <h3>Privacy</h3>
+            <ul>
+                <li>Students only see their own information.</li>
+                <li>Staff and admins access records only for school purposes.</li>
+                <li>Only relevant personal data is stored.</li>
+                <li>Confidential data should not be shared outside the system.</li>
+            </ul>
+        </div>
+        <div class="info-box">
+            <h3>Ethics</h3>
+            <ul>
+                <li>Use the system fairly and responsibly.</li>
+                <li>Do not modify records without authority.</li>
+                <li>Do not misuse monitoring features.</li>
+                <li>Be transparent about why data is collected.</li>
+            </ul>
+        </div>
+    </div>
+</section>
+{% endblock %}

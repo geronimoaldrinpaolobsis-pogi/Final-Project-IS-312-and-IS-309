@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+{% block content %}
+<section class="card">
+    <h2>Manage Appointments</h2>
+    <table>
+        <tr><th>ID</th><th>Student</th><th>Date</th><th>Time</th><th>Purpose</th><th>Status</th><th>Update</th></tr>
+        {% for appointment in appointments %}
+        <tr>
+            <td>{{ appointment.id }}</td>
+            <td>{{ appointment.full_name }}</td>
+            <td>{{ appointment.appointment_date }}</td>
+            <td>{{ appointment.appointment_time }}</td>
+            <td>{{ appointment.purpose }}</td>
+            <td>{{ appointment.status }}</td>
+            <td>
+                <form method="post" class="inline-form">
+                    <input type="hidden" name="appointment_id" value="{{ appointment.id }}">
+                    <select name="status">
+                        <option {% if appointment.status == 'Pending' %}selected{% endif %}>Pending</option>
+                        <option {% if appointment.status == 'Approved' %}selected{% endif %}>Approved</option>
+                        <option {% if appointment.status == 'Rejected' %}selected{% endif %}>Rejected</option>
+                    </select>
+                    <input type="text" name="staff_note" value="{{ appointment.staff_note }}" placeholder="Optional note">
+                    <button type="submit">Save</button>
+                </form>
+            </td>
+        </tr>
+        {% endfor %}
+    </table>
+</section>
+{% endblock %}

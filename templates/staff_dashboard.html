@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="grid two">
+    <section class="card">
+        <h2>Staff Dashboard</h2>
+        <p>Review incoming appointment requests and maintain student records responsibly.</p>
+    </section>
+    <section class="card">
+        <h2>Announcements</h2>
+        {% for item in announcements %}
+            <div class="list-item">
+                <h3>{{ item.title }}</h3>
+                <p>{{ item.content }}</p>
+            </div>
+        {% endfor %}
+    </section>
+</div>
+<section class="card">
+    <h2>Recent Appointment Requests</h2>
+    <table>
+        <tr><th>Student</th><th>Date</th><th>Time</th><th>Purpose</th><th>Status</th></tr>
+        {% for appointment in appointments %}
+        <tr>
+            <td>{{ appointment.full_name }}</td>
+            <td>{{ appointment.appointment_date }}</td>
+            <td>{{ appointment.appointment_time }}</td>
+            <td>{{ appointment.purpose }}</td>
+            <td>{{ appointment.status }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+</section>
+{% endblock %}

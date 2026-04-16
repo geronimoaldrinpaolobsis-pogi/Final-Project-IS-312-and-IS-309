@@ -1,0 +1,58 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="grid two">
+    <section class="card">
+        <h2>Welcome, {{ session.get('full_name') }}</h2>
+        <p>You are logged in as <strong>{{ session.get('role') }}</strong>.</p>
+        <p>This dashboard shows your announcements, appointment history, and student record summary.</p>
+    </section>
+    <section class="card">
+        <h2>My Record</h2>
+        {% if record %}
+            <p><strong>Student Number:</strong> {{ record.student_number }}</p>
+            <p><strong>Course:</strong> {{ record.course }}</p>
+            <p><strong>Year Level:</strong> {{ record.year_level }}</p>
+            <p><strong>Contact:</strong> {{ record.contact_number }}</p>
+            <p><strong>Address:</strong> {{ record.address }}</p>
+            <p><strong>Guardian:</strong> {{ record.guardian_name }}</p>
+        {% else %}
+            <p>No record found yet.</p>
+        {% endif %}
+    </section>
+</div>
+
+<div class="grid two">
+    <section class="card">
+        <div class="section-head">
+            <h2>Announcements</h2>
+            <a class="button-link" href="{{ url_for('appointments') }}">Book Appointment</a>
+        </div>
+        {% for item in announcements %}
+            <div class="list-item">
+                <h3>{{ item.title }}</h3>
+                <p>{{ item.content }}</p>
+                <small>{{ item.created_at }}</small>
+            </div>
+        {% endfor %}
+    </section>
+
+    <section class="card">
+        <h2>Appointment History</h2>
+        {% if appointments %}
+        <table>
+            <tr><th>Date</th><th>Time</th><th>Purpose</th><th>Status</th></tr>
+            {% for appointment in appointments %}
+            <tr>
+                <td>{{ appointment.appointment_date }}</td>
+                <td>{{ appointment.appointment_time }}</td>
+                <td>{{ appointment.purpose }}</td>
+                <td>{{ appointment.status }}</td>
+            </tr>
+            {% endfor %}
+        </table>
+        {% else %}
+            <p>No appointments yet.</p>
+        {% endif %}
+    </section>
+</div>
+{% endblock %}

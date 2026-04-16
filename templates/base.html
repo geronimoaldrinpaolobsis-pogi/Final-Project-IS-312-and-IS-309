@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ title or 'IS 312 System' }}</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <header class="topbar">
+        <div>
+            <h1>Smart Student Appointment and Record Management System</h1>
+            <p class="subtitle">IS 312 Final System Proposal Prototype</p>
+        </div>
+        {% if session.get('user_id') %}
+        <nav>
+            <a href="{{ url_for('dashboard') }}">Dashboard</a>
+            {% if session.get('role') == 'student' %}
+                <a href="{{ url_for('appointments') }}">Appointments</a>
+            {% endif %}
+            {% if session.get('role') in ['staff', 'admin'] %}
+                <a href="{{ url_for('manage_appointments') }}">Manage Appointments</a>
+                <a href="{{ url_for('records') }}">Records</a>
+            {% endif %}
+            {% if session.get('role') == 'admin' %}
+                <a href="{{ url_for('users') }}">Users</a>
+                <a href="{{ url_for('logs') }}">Logs</a>
+            {% endif %}
+            <a href="{{ url_for('ethics') }}">Security & Ethics</a>
+            <a href="{{ url_for('logout') }}">Logout</a>
+        </nav>
+        {% endif %}
+    </header>
+
+    <main class="container">
+        {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+                {% for category, message in messages %}
+                    <div class="flash {{ category }}">{{ message }}</div>
+                {% endfor %}
+            {% endif %}
+        {% endwith %}
+
+        {% block content %}{% endblock %}
+    </main>
+</body>
+</html>

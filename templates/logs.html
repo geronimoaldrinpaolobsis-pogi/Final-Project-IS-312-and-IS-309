@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+{% block content %}
+<section class="card">
+    <h2>Activity Logs</h2>
+    <table>
+        <tr><th>Time</th><th>User</th><th>Username</th><th>Action</th></tr>
+        {% for log in logs %}
+        <tr>
+            <td>{{ log.log_time }}</td>
+            <td>{{ log.full_name or 'System' }}</td>
+            <td>{{ log.username or '-' }}</td>
+            <td>{{ log.action }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+</section>
+{% endblock %}

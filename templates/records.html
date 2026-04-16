@@ -1,0 +1,55 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="grid two">
+    <section class="card">
+        <h2>Create or Update Student Record</h2>
+        <form method="post" class="form-grid">
+            <label>Student
+                <select name="student_id" required>
+                    <option value="">Select a student</option>
+                    {% for student in students %}
+                    <option value="{{ student.id }}">{{ student.full_name }} ({{ student.username }})</option>
+                    {% endfor %}
+                </select>
+            </label>
+            <label>Student Number
+                <input type="text" name="student_number" required>
+            </label>
+            <label>Course
+                <input type="text" name="course" required>
+            </label>
+            <label>Year Level
+                <input type="text" name="year_level" required>
+            </label>
+            <label>Contact Number
+                <input type="text" name="contact_number">
+            </label>
+            <label>Address
+                <input type="text" name="address">
+            </label>
+            <label>Guardian Name
+                <input type="text" name="guardian_name">
+            </label>
+            <label class="full">Notes
+                <textarea name="notes" rows="4"></textarea>
+            </label>
+            <button type="submit">Save Record</button>
+        </form>
+    </section>
+    <section class="card">
+        <h2>Existing Records</h2>
+        <table>
+            <tr><th>Student</th><th>Number</th><th>Course</th><th>Year</th><th>Updated</th></tr>
+            {% for record in records %}
+            <tr>
+                <td>{{ record.full_name }}</td>
+                <td>{{ record.student_number }}</td>
+                <td>{{ record.course }}</td>
+                <td>{{ record.year_level }}</td>
+                <td>{{ record.updated_at }}</td>
+            </tr>
+            {% endfor %}
+        </table>
+    </section>
+</div>
+{% endblock %}

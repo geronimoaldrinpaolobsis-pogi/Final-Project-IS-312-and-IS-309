@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="card narrow">
+    <h2>Login</h2>
+    <form method="post" class="form-grid">
+        <label>Username
+            <input type="text" name="username" required>
+        </label>
+        <label>Password
+            <input type="password" name="password" required>
+        </label>
+        <button type="submit">Sign In</button>
+    </form>
+    <div class="info-box">
+        <h3>Demo Accounts</h3>
+        <p><strong>Student:</strong> student1 / student123</p>
+        <p><strong>Staff:</strong> staff1 / staff123</p>
+        <p><strong>Admin:</strong> admin1 / admin123</p>
+    </div>
+</div>
+{% endblock %}
